@@ -3,6 +3,7 @@ package config
 import (
 	"fmt"
 	gommonLog "github.com/labstack/gommon/log"
+	"todo_service/cmd/models"
 
 	"github.com/spf13/viper"
 	"gorm.io/driver/postgres"
@@ -61,6 +62,7 @@ func ConnectDB() {
 	}
 
 	// apply AutoMigrate here
+	db.AutoMigrate(&models.Todo{})
 
 	sqlDb, err := db.DB()
 	if err != nil {
